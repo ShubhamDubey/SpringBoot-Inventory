@@ -7,7 +7,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Product {
- 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	private String name;
+	private String brand;
+	private String madein;
+	private float price;
 	public Long getId() {
 		return id;
 	}
@@ -23,7 +29,7 @@ public class Product {
 	public String getBrand() {
 		return brand;
 	}
-	public void setBand(String brand) {
+	public void setBrand(String brand) {
 		this.brand = brand;
 	}
 	public String getMadein() {
@@ -38,13 +44,6 @@ public class Product {
 	public void setPrice(float price) {
 		this.price = price;
 	}
-
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	private String name;
-	private String brand;
-	private String madein;
-	private float price;
+	
 }
