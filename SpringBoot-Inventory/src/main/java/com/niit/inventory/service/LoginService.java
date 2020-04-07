@@ -29,4 +29,9 @@ public class LoginService {
 		return urepo.findByEmail(email);
 		
 	}
+
+	public Dealer findByPassword(String password) {
+		// TODO Auto-generated method stub
+		return urepo.findByPassword(password);
+	}
 }
