@@ -2,7 +2,9 @@ package com.niit.inventory.model;
 
 
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Date;
+import java.util.Base64;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -80,7 +82,7 @@ public class Dealer {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password =  encryptPass(password);
 	}
 
 	public Date getDob() {
@@ -107,6 +109,12 @@ public class Dealer {
 		this.address = address;
 	}
 	
-	
+	private String encryptPass(String pass) {
+		Base64.Encoder encoder = Base64.getEncoder();
+		String normalString = pass;
+		String encodedString = encoder.encodeToString(
+	    normalString.getBytes(StandardCharsets.UTF_8) );
+		return encodedString;
+	}
 	
 }
