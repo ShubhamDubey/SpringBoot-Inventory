@@ -1,7 +1,12 @@
 package com.niit.inventory;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,7 +26,8 @@ public class LoginControllerTest {
 
 	@InjectMocks
 	LoginController loginController;
-
+	
+	
 	@Mock
 	private LoginService lservice;
 
@@ -67,13 +73,28 @@ public class LoginControllerTest {
 	}
 
 	@Test
-	public void loginDealer() {
+	public void loginDealerTest1()
+	{
+	String email="satyam1@gmail.com";
+	Dealer d=new Dealer();
+	d.setEmail("satyam1@gmail.com");
+	d.setPassword("12345");
+	when(lservice.findByEmail(email)).thenReturn(d);
 
-		String email = "xyz@gmail.com";
-		String password = "root";
-		Dealer d=lservice.findByEmail(email);
-		assertEquals(d,verify(lservice, times(1)).findByEmail(email));
+	Dealer x= lservice.findByEmail("satyam1@gmail.com");
 
+	assertEquals(x.getEmail(),"satyam1@gmail.com" );
+	assertEquals(x.getPassword(),loginController.encryptPass("12345"));
+	verify(lservice,times(1)).findByEmail("satyam1@gmail.com");
+	}
+	@Spy
+	HttpServletRequest request;
+	@Spy
+	HttpSession ses;
+	@Test
+	public void logoutTest() {
+		when(request.getSession()).thenReturn(ses);
+		Assert.assertEquals(loginController.logout(request),"index");
 	}
 
 }
