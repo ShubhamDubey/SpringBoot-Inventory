@@ -117,4 +117,5 @@ public class LoginController {
 	    normalString.getBytes(StandardCharsets.UTF_8) );
 		return encodedString;
 	}
+
 }
