@@ -56,3 +56,20 @@ In this project we learn the Spring with JPA and DB Connections.'
 
 * logging.level.root=WARN
 
+
+>## Testing
+
+>>### Annotations
+
+>>> Mockito with Junit
+
+>>> #### 1. Mock
+
+>>>> **Mock** is used for **dummy Object/clone Object**
+
+>>> ### 2. Spy
+
+>>>> Spy is used for **Real Object**
+
+
+ 
