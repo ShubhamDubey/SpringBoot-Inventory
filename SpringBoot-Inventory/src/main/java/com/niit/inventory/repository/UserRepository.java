@@ -7,4 +7,6 @@ import com.niit.inventory.model.Dealer;
 public interface UserRepository extends JpaRepository<Dealer, Long> {
 
 	public Dealer findByEmail(String email);
+
+	public Dealer findByPassword(String password);
 }
