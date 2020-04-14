@@ -4,7 +4,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Product Manager</title>
-<link rel="stylesheet" href="/resources/static/css/style1.css">
+<link rel="stylesheet" href="/ims/resources/static/css/style1.css">
 </head>
 <body>
 Welcome ${delear.fname} ${dealer.lname} -${dealer.address.city}

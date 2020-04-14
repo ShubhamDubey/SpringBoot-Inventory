@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Dealer Registration</title>
-<link rel="stylesheet" href="/resources/static/css/register.css">
+<link rel="stylesheet" href="/ims/resources/static/css/register.css">
 </head>
 <body>
 <div  class="form">

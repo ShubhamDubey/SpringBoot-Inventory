@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Dealer Login</title>
-<link rel="stylesheet" href="/resources/static/css/login.css">
+<link rel="stylesheet" href="/ims/resources/static/css/login.css">
  
 </head>
 <body>

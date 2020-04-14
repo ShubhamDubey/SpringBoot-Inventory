@@ -11,10 +11,13 @@ import javax.servlet.http.HttpSession;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.Model;
 
 import com.niit.inventory.controller.LoginController;
@@ -22,12 +25,13 @@ import com.niit.inventory.model.Address;
 import com.niit.inventory.model.Dealer;
 import com.niit.inventory.service.LoginService;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = { LoginController.class })
 public class LoginControllerTest {
 
 	@InjectMocks
 	LoginController loginController;
-	
-	
+
 	@Mock
 	private LoginService lservice;
 
@@ -73,28 +77,29 @@ public class LoginControllerTest {
 	}
 
 	@Test
-	public void loginDealerTest1()
-	{
-	String email="satyam1@gmail.com";
-	Dealer d=new Dealer();
-	d.setEmail("satyam1@gmail.com");
-	d.setPassword("12345");
-	when(lservice.findByEmail(email)).thenReturn(d);
+	public void loginDealerTest1() {
+		String email = "satyam1@gmail.com";
+		Dealer d = new Dealer();
+		d.setEmail("satyam1@gmail.com");
+		d.setPassword("12345");
+		when(lservice.findByEmail(email)).thenReturn(d);
 
-	Dealer x= lservice.findByEmail("satyam1@gmail.com");
+		Dealer x = lservice.findByEmail("satyam1@gmail.com");
 
-	assertEquals(x.getEmail(),"satyam1@gmail.com" );
-	assertEquals(x.getPassword(),loginController.encryptPass("12345"));
-	verify(lservice,times(1)).findByEmail("satyam1@gmail.com");
+		assertEquals(x.getEmail(), "satyam1@gmail.com");
+		assertEquals(x.getPassword(), loginController.encryptPass("12345"));
+		verify(lservice, times(1)).findByEmail("satyam1@gmail.com");
 	}
+
 	@Spy
 	HttpServletRequest request;
 	@Spy
 	HttpSession ses;
+
 	@Test
 	public void logoutTest() {
 		when(request.getSession()).thenReturn(ses);
-		Assert.assertEquals(loginController.logout(request),"index");
+		Assert.assertEquals(loginController.logout(request), "index");
 	}
 
 }
